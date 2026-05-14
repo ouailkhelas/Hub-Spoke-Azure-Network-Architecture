@@ -55,11 +55,11 @@ terraform apply
 - Public IPs
 
 ### 📍Phase 2: Portal configuration
--Configure Firewall Rules
--Create Application Rules
--Create NSG
 
-```
+- Configure Firewall Rules
+- Create Application Rules
+- Create NSG
+
 
 ## 🎯 My Contributions to This Project
 
