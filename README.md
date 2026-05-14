@@ -11,7 +11,7 @@ This project demonstrates deploying a Hub & Spoke network topology in Azure with
 - VNet Peering (Hub ↔ Spoke)
 - Firewall rules for traffic control
 
-##📍Architecture
+## 📍Architecture
 ```
 Spoke VNet 1          Hub VNet          Spoke VNet 2
 ┌─────────────┐   ┌──────────────┐   ┌─────────────┐
@@ -30,9 +30,9 @@ Spoke VNet 1          Hub VNet          Spoke VNet 2
 - **Tools**: Azure Portal, Azure CLI, Cloud Shell
 
 
-## 📍How to Deploy
+## 🎯 How to Deploy
 
-### Phase 1: Infrastructure with Terraform
+### 📍Phase 1: Infrastructure with Terraform
 
 ```bash
 cd terraform
@@ -55,33 +55,33 @@ terraform apply
 - Public IPs
 
 ### 📍Phase 2: Portal configuration
-Configure Firewall Rules
-Create Application Rules
-Create NSG
+-Configure Firewall Rules
+-Create Application Rules
+-Create NSG
+
 ```
 
-## 📍My Contributions to This Project
+## 🎯 My Contributions to This Project
 
 ### Using Terraform (IaC)
-```
+
 ✓ Deployed all infrastructure with terraform apply
 ✓ Created 2 VNets, 3 Subnets per spoke
 ✓ Deployed Azure Firewall & NAT Gateway
 ✓ Configured network interfaces
 ✓ Created Linux VMs with cloud-init
-```
+
 
 ### Using Azure Portal
-```
 ✓ Created firewall application rules
 ✓ Created firewall network rules
 ✓ Configured NSG rules manually
 ✓ Verified peering connections
 ✓ Monitored traffic in diagnostic logs
-```
+
 
 ### Using Azure CLI / Cloud Shell
-```
+
 ✓ Connected to VMs via SSH
 ✓ Tested ping between VMs
 ✓ Checked effective NSG rules
