@@ -1,5 +1,5 @@
 # Hub & Spoke Network Architecture
-
+kjejjejeje,jjjjjjjjjjjjjjjjjjjjjjjjjjjj
 ## 🚀 Overview
 This project demonstrates deploying a Hub & Spoke network topology in Azure with Firewall, NAT Gateway, and VNet peering. Uses **Terraform (IaC) + Portal + CLI**.
 
@@ -60,11 +60,9 @@ terraform apply
 - Create Application Rules
 - Create NSG
 
-
 ## 🎯 My Contributions to This Project
 
 ### Using Terraform (IaC)
-
 ✓ Deployed all infrastructure with terraform apply
 ✓ Created 2 VNets, 3 Subnets per spoke
 ✓ Deployed Azure Firewall & NAT Gateway
@@ -81,7 +79,6 @@ terraform apply
 
 
 ### Using Azure CLI / Cloud Shell
-
 ✓ Connected to VMs via SSH
 ✓ Tested ping between VMs
 ✓ Checked effective NSG rules
