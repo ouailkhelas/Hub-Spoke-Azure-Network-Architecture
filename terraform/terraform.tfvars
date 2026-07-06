@@ -1,5 +1,4 @@
 subscription_id = "*********************"
-
 resource_group_name = "rg-hub-spoke"
 location            = "eastus"
 environment         = "dev"
