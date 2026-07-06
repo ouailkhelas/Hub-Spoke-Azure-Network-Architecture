@@ -1,5 +1,4 @@
 # Quick Reference Guide
-### Quick Deploy (5 minutes)
 
 ```bash
 # 1. Get subscription ID
@@ -14,11 +13,6 @@ cd terraform
 terraform init
 terraform apply
 
-# Type: yes when asked
-
-# 4. Get outputs
-terraform output
-```
 
 ### Connect to VMs
 
