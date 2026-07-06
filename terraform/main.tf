@@ -1,7 +1,4 @@
-# ==========================================
 # RESOURCE GROUP
-# ==========================================
-
 resource "azurerm_resource_group" "hub_spoke" {
   name     = var.resource_group_name
   location = var.location
@@ -12,10 +9,7 @@ resource "azurerm_resource_group" "hub_spoke" {
   }
 }
 
-# ==========================================
 # HUB VNET
-# ==========================================
-
 resource "azurerm_virtual_network" "hub" {
   name                = "vnet-hub"
   address_space       = [var.hub_vnet_cidr]
@@ -43,10 +37,7 @@ resource "azurerm_subnet" "hub_natgw" {
   address_prefixes     = [var.hub_natgw_subnet_cidr]
 }
 
-# ==========================================
 # SPOKE 1 VNET
-# ==========================================
-
 resource "azurerm_virtual_network" "spoke1" {
   name                = "vnet-spoke1"
   address_space       = [var.spoke1_vnet_cidr]
@@ -65,10 +56,7 @@ resource "azurerm_subnet" "spoke1" {
   address_prefixes     = [var.spoke1_subnet_cidr]
 }
 
-# ==========================================
 # SPOKE 2 VNET
-# ==========================================
-
 resource "azurerm_virtual_network" "spoke2" {
   name                = "vnet-spoke2"
   address_space       = [var.spoke2_vnet_cidr]
@@ -87,10 +75,7 @@ resource "azurerm_subnet" "spoke2" {
   address_prefixes     = [var.spoke2_subnet_cidr]
 }
 
-# ==========================================
 # VNET PEERING - Hub to Spoke 1
-# ==========================================
-
 resource "azurerm_virtual_network_peering" "hub_to_spoke1" {
   name                      = "peer-hub-spoke1"
   resource_group_name       = azurerm_resource_group.hub_spoke.name
@@ -115,10 +100,7 @@ resource "azurerm_virtual_network_peering" "spoke1_to_hub" {
   use_remote_gateways          = false
 }
 
-# ==========================================
 # VNET PEERING - Hub to Spoke 2
-# ==========================================
-
 resource "azurerm_virtual_network_peering" "hub_to_spoke2" {
   name                      = "peer-hub-spoke2"
   resource_group_name       = azurerm_resource_group.hub_spoke.name
@@ -143,10 +125,7 @@ resource "azurerm_virtual_network_peering" "spoke2_to_hub" {
   use_remote_gateways          = false
 }
 
-# ==========================================
 # PUBLIC IPS
-# ==========================================
-
 # Firewall Public IP
 resource "azurerm_public_ip" "firewall" {
   name                = "pip-firewall"
@@ -183,10 +162,7 @@ resource "azurerm_public_ip" "vm2" {
   sku                 = "Standard"
 }
 
-# ==========================================
 # AZURE FIREWALL
-# ==========================================
-
 resource "azurerm_firewall" "hub" {
   name                = "firewall-hub"
   location            = azurerm_resource_group.hub_spoke.location
@@ -205,10 +181,7 @@ resource "azurerm_firewall" "hub" {
   }
 }
 
-# ==========================================
 # NAT GATEWAY
-# ==========================================
-
 resource "azurerm_nat_gateway" "hub" {
   name                = "natgw-hub"
   location            = azurerm_resource_group.hub_spoke.location
@@ -235,10 +208,7 @@ resource "azurerm_subnet_nat_gateway_association" "spoke2" {
   nat_gateway_id = azurerm_nat_gateway.hub.id
 }
 
-# ==========================================
 # NETWORK SECURITY GROUPS - SPOKE 1
-# ==========================================
-
 resource "azurerm_network_security_group" "spoke1" {
   name                = "nsg-spoke1"
   location            = azurerm_resource_group.hub_spoke.location
@@ -285,10 +255,7 @@ resource "azurerm_network_security_group" "spoke1" {
   }
 }
 
-# ==========================================
 # NETWORK SECURITY GROUPS - SPOKE 2
-# ==========================================
-
 resource "azurerm_network_security_group" "spoke2" {
   name                = "nsg-spoke2"
   location            = azurerm_resource_group.hub_spoke.location
@@ -335,10 +302,7 @@ resource "azurerm_network_security_group" "spoke2" {
   }
 }
 
-# ==========================================
 # NETWORK INTERFACES - VM 1 (SPOKE 1)
-# ==========================================
-
 resource "azurerm_network_interface" "vm1" {
   name                = "nic-vm1"
   location            = azurerm_resource_group.hub_spoke.location
@@ -357,10 +321,7 @@ resource "azurerm_network_interface_security_group_association" "vm1" {
   network_security_group_id = azurerm_network_security_group.spoke1.id
 }
 
-# ==========================================
 # NETWORK INTERFACES - VM 2 (SPOKE 2)
-# ==========================================
-
 resource "azurerm_network_interface" "vm2" {
   name                = "nic-vm2"
   location            = azurerm_resource_group.hub_spoke.location
@@ -379,10 +340,7 @@ resource "azurerm_network_interface_security_group_association" "vm2" {
   network_security_group_id = azurerm_network_security_group.spoke2.id
 }
 
-# ==========================================
 # LINUX VIRTUAL MACHINES
-# ==========================================
-
 # VM 1 in Spoke 1
 resource "azurerm_linux_virtual_machine" "vm1" {
   name                = "vm-spoke1-01"
