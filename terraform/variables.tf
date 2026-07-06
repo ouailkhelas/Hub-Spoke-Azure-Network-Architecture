@@ -21,7 +21,6 @@ variable "environment" {
   default     = "dev"
 }
 
-# Network variables
 variable "hub_vnet_cidr" {
   description = "Hub VNet CIDR block"
   type        = string
@@ -40,7 +39,6 @@ variable "spoke2_vnet_cidr" {
   default     = "10.2.0.0/16"
 }
 
-# Subnet variables
 variable "hub_firewall_subnet_cidr" {
   description = "Hub Firewall subnet CIDR"
   type        = string
@@ -65,7 +63,6 @@ variable "spoke2_subnet_cidr" {
   default     = "10.2.1.0/24"
 }
 
-# VM variables
 variable "vm_size" {
   description = "VM Size"
   type        = string
